@@ -5,7 +5,7 @@
     {'title': 'Message 2', 'text': 'This is message two'},
   ];
 
-  function getMessages(){
+  function getMessages(m, v){
 
     setTimeout(() =>{
       let output = '';
@@ -25,9 +25,14 @@
   }
 
   function createMessage_with_callback(message_title, message_text, callback){
+
     setTimeout(() =>{
       msgs.push({'title': message_title, 'text': message_text});
-      callback();
+
+      if(typeof callback === 'function'){ // incase a non-function is passes or no argument is sent
+        callback();
+      }
+
     }, 2000);
   }
 
